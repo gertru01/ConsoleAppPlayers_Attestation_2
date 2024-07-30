@@ -9,9 +9,11 @@ import ru.inno.course.player.ext.Players;
 import ru.inno.course.player.model.Player;
 import ru.inno.course.player.service.PlayerService;
 
+
 import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith({PlayerServiceResolver.class, DbConnectionResolver.class})
 public class PlayerServiceStorageTest {
@@ -27,6 +29,8 @@ public class PlayerServiceStorageTest {
     @DisplayName("Проверить запуск с 1000 пользователей")
     public void loadTest(@Players(playerNumber = 1000) PlayerService service) {
         Collection<Player> listBefore = service.getPlayers();
+
         assertEquals(1000, listBefore.size());
+        assertTrue(listBefore.size() > 1000);
     }
 }

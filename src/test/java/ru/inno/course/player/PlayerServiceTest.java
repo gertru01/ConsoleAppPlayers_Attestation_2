@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -60,6 +61,7 @@ public class PlayerServiceTest {
     @Tag("негативный")
     @DisplayName("Нельзя создать дубликат игрока")
     public void iCannotCreateADuplicate() {
+        System.out.println("Негатив 1");
         service.createPlayer(NICKNAME);
         assertThrows(IllegalArgumentException.class, () -> service.createPlayer(NICKNAME));
     }
@@ -68,7 +70,8 @@ public class PlayerServiceTest {
     @Tags({@Tag("негативный"), @Tag("CRITICAL")})
     @DisplayName("Нельзя получить несуществующего пользователя")
     public void iCannotGetEmptyUser() {
-        assertThrows(IllegalArgumentException.class, () -> service.getPlayerById(9999));
+        System.out.println("Негатив 2");
+        assertThrows(NoSuchElementException.class, () -> service.getPlayerById(9999));
     }
 
     @ParameterizedTest
