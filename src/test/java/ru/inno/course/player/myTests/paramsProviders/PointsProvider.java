@@ -1,4 +1,4 @@
-package ru.inno.course.player.ext;
+package ru.inno.course.player.myTests.paramsProviders;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.params.provider.Arguments;
@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class PointsProvider implements ArgumentsProvider {
     @Override
-    public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
+    public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
         return Stream.of(
                 Arguments.of(10, 10),
                 Arguments.of(100, 100),
@@ -17,6 +17,5 @@ public class PointsProvider implements ArgumentsProvider {
                 Arguments.of(1234, 100),
                 Arguments.of(-5000000, -5000000)
         );
-
     }
 }
